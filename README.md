@@ -1,4 +1,4 @@
-# stoker 🔥
+# @vbhv11/stoker 🔥
 
 > This repo is a fork of [stoker](https://github.com/w3cj/stoker) by
 > [@w3cj](https://github.com/w3cj) with the goal of implementing utilities for
@@ -6,45 +6,28 @@
 
 _stoke the flame 🤙🔥_
 
-Utilities for [hono](https://www.npmjs.com/package/hono) and
-[@hono/zod-openapi](https://www.npmjs.com/package/@hono/zod-openapi)
+[![JSR](https://jsr.io/badges/@vbhv11/stoker)](https://jsr.io/@vbhv11/stoker)
+[![GitHub last commit](https://img.shields.io/github/last-commit/0xVaibhav11/stoker-jsr)](https://github.com/0xVaibhav11/stoker-jsr/commits/main)
 
-- [stoker](#stoker)
-  - [Utilities](#utilities)
-    - [stoker/http-status-codes](#stokerhttp-status-codes)
-      - [Example Usage](#example-usage)
-    - [stoker/http-status-phrases](#stokerhttp-status-phrases)
-      - [Example Usage](#example-usage-1)
-  - [Middlewares](#middlewares)
-    - [stoker/middlewares/not-found](#stokermiddlewaresnot-found)
-      - [Example Usage](#example-usage-2)
-    - [stoker/middlewares/on-error](#stokermiddlewareson-error)
-      - [Example Usage](#example-usage-3)
-    - [stoker/middlewares/serve-emoji-favicon](#stokermiddlewaresserve-emoji-favicon)
-      - [Example Usage](#example-usage-4)
-  - [Open API](#open-api)
-    - [Default Hook](#default-hook)
-      - [Example Usage](#example-usage-5)
-    - [Helpers](#helpers)
-      - [stoker/openapi/helpers/json-content](#stokeropenapihelpersjson-content)
-        - [Example Usage](#example-usage-6)
-      - [stoker/openapi/helpers/json-content-required](#stokeropenapihelpersjson-content-required)
-        - [Example Usage](#example-usage-7)
-      - [stoker/openapi/helpers/json-content-one-of](#stokeropenapihelpersjson-content-one-of)
-        - [Example Usage](#example-usage-8)
-      - [stoker/openapi/helpers/one-of](#stokeropenapihelpersone-of)
-    - [Schemas](#schemas)
-      - [stoker/openapi/schemas/id-params](#stokeropenapischemasid-params)
-        - [Example Usage](#example-usage-9)
-      - [stoker/openapi/schemas/slug-params](#stokeropenapischemasslug-params)
-        - [Example Usage](#example-usage-10)
-      - [stoker/openapi/schemas/id-uuid-params](#stokeropenapischemasid-uuid-params)
-        - [Example Usage](#example-usage-11)
-      - [stoker/openapi/schemas/create-message-object](#stokeropenapischemascreate-message-object)
-        - [Example Usage](#example-usage-12)
-      - [stoker/openapi/schemas/create-error-schema](#stokeropenapischemascreate-error-schema)
-        - [Example Usage](#example-usage-13)
-  - [Credits](#credits)
+## Install
+
+```bash
+deno add jsr:@vbhv11/stoker
+```
+or
+
+```json
+{
+  "imports": {
+    "@vbhv11/stoker": "jsr:@vbhv11/stoker",
+    //or for smaller imports
+    "stoker": "jsr:@vbhv11/stoker"
+  }
+}
+```
+
+> Utilities for [hono](https://www.npmjs.com/package/hono) and
+>[@hono/zod-openapi](https://www.npmjs.com/package/@hono/zod-openapi)
 
 ## Utilities
 
@@ -66,7 +49,7 @@ anywhere you need a status code instead of hard coding raw numbers.
 
 ```ts
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
+import * as HttpStatusCodes from "@vbhv11/stoker/http-status-codes";
 
 const app = new OpenAPIHono();
 
@@ -112,21 +95,21 @@ app.openapi(
 export default app;
 ```
 
-### stoker/http-status-phrases
+### @vbhv11/stoker/http-status-phrases
 
 HTTP status phrase constants.
 
 #### Example Usage
 
 ```ts
-import * as HttpStatusPhrases from "stoker/http-status-phrases";
+import * as HttpStatusPhrases from "@vbhv11/stoker/http-status-phrases";
 
 console.log(HttpStatusPhrases.NOT_FOUND); // Not Found
 ```
 
 ## Middlewares
 
-### stoker/middlewares/not-found
+### @vbhv11/stoker/middlewares/not-found
 
 A default 404 handler.
 
@@ -138,7 +121,7 @@ A default 404 handler.
 
 ```ts
 import { Hono } from "hono";
-import notFound from "stoker/middlewares/not-found";
+import notFound from "@vbhv11/stoker/middlewares/not-found";
 
 const app = new Hono();
 
@@ -147,7 +130,7 @@ app.notFound(notFound);
 export default app;
 ```
 
-### stoker/middlewares/on-error
+### @vbhv11/stoker/middlewares/on-error
 
 A default error handler.
 
@@ -160,7 +143,7 @@ A default error handler.
 
 ```ts
 import { Hono } from "hono";
-import onError from "stoker/middlewares/on-error";
+import onError from "@vbhv11/stoker/middlewares/on-error";
 
 const app = new Hono();
 
@@ -169,7 +152,7 @@ app.onError(onError);
 export default app;
 ```
 
-### stoker/middlewares/serve-emoji-favicon
+### @vbhv11/stoker/middlewares/serve-emoji-favicon
 
 Serve an svg emoji as a favicon from `/favicon.ico`
 
@@ -177,7 +160,7 @@ Serve an svg emoji as a favicon from `/favicon.ico`
 
 ```ts
 import { Hono } from "hono";
-import serveEmojiFavicon from "stoker/middlewares/serve-emoji-favicon";
+import serveEmojiFavicon from "@vbhv11/stoker/middlewares/serve-emoji-favicon";
 
 const app = new Hono();
 
@@ -197,7 +180,7 @@ A default error hook you can include in your OpenAPIHono instance. Includes the
 
 ```ts
 import { OpenAPIHono } from "@hono/zod-openapi";
-import defaultHook from "stoker/openapi/default-hook";
+import defaultHook from "@vbhv11/stoker/openapi/default-hook";
 
 /*
 Any validation errors will respond with status code 422 and body:
@@ -215,7 +198,7 @@ export default app;
 
 ### Helpers
 
-#### stoker/openapi/helpers/json-content
+#### @vbhv11/stoker/openapi/helpers/json-content
 
 Create a content / schema description with a type of `application/json`
 
@@ -223,7 +206,7 @@ Create a content / schema description with a type of `application/json`
 
 ```ts
 import { z } from "@hono/zod-openapi";
-import jsonContent from "stoker/openapi/helpers/json-content";
+import jsonContent from "@vbhv11/stoker/openapi/helpers/json-content";
 
 const schema = z.object({
   message: z.string(),
@@ -246,7 +229,7 @@ const response = jsonContent(
 );
 ```
 
-#### stoker/openapi/helpers/json-content-required
+#### @vbhv11/stoker/openapi/helpers/json-content-required
 
 Useful for json body schema validators.
 
@@ -257,7 +240,7 @@ required set to `true`
 
 ```ts
 import { z } from "@hono/zod-openapi";
-import jsonContentRequired from "stoker/openapi/helpers/json-content-required";
+import jsonContentRequired from "@vbhv11/stoker/openapi/helpers/json-content-required";
 
 const schema = z.object({
   message: z.string(),
@@ -281,7 +264,7 @@ const response = jsonContentRequired(
 );
 ```
 
-#### stoker/openapi/helpers/json-content-one-of
+#### @vbhv11/stoker/openapi/helpers/json-content-one-of
 
 > Peer dependency of `@asteasolutions/zod-to-openapi`
 
@@ -298,9 +281,9 @@ schemas.
 
 ```ts
 import { z } from "@hono/zod-openapi";
-import jsonContentOneOf from "stoker/openapi/helpers/json-content-one-of";
-import createErrorSchema from "stoker/openapi/schemas/create-error-schema";
-import IdParamsSchema from "stoker/openapi/schemas/id-params";
+import jsonContentOneOf from "@vbhv11/stoker/openapi/helpers/json-content-one-of";
+import createErrorSchema from "@vbhv11/stoker/openapi/schemas/create-error-schema";
+import IdParamsSchema from "@vbhv11/stoker/openapi/schemas/id-params";
 
 const bodySchema = z.object({
   name: z.string(),
@@ -325,18 +308,18 @@ const result = jsonContentOneOf(
 );
 ```
 
-#### stoker/openapi/helpers/one-of
+#### @vbhv11/stoker/openapi/helpers/one-of
 
 > Peer dependency of `@asteasolutions/zod-to-openapi`
 
-Used internally by `stoker/openapi/helpers/json-content-one-of` but exported
+Used internally by `@vbhv11/stoker/openapi/helpers/json-content-one-of` but exported
 here in case you need to access the generated schemas for other use cases.
 
 ```ts
 import { z } from "@hono/zod-openapi";
-import oneOf from "stoker/openapi/helpers/one-of";
-import createErrorSchema from "stoker/openapi/schemas/create-error-schema";
-import IdParamsSchema from "stoker/openapi/schemas/id-params";
+import oneOf from "@vbhv11/stoker/openapi/helpers/one-of";
+import createErrorSchema from "@vbhv11/stoker/openapi/schemas/create-error-schema";
+import IdParamsSchema from "@vbhv11/stoker/openapi/schemas/id-params";
 
 const bodySchema = z.object({
   name: z.string(),
@@ -355,7 +338,7 @@ const result = oneOf([
 
 Commonly used zod schemas for use when creating routes with `@hono/zod-openapi`
 
-#### stoker/openapi/schemas/id-params
+#### @vbhv11/stoker/openapi/schemas/id-params
 
 Validate `id` in path params as a number.
 
@@ -363,9 +346,9 @@ Validate `id` in path params as a number.
 
 ```ts
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
-import jsonContent from "stoker/openapi/helpers/json-content";
-import IdParamsSchema from "stoker/openapi/schemas/id-params";
+import * as HttpStatusCodes from "@vbhv11/stoker/http-status-codes";
+import jsonContent from "@vbhv11/stoker/openapi/helpers/json-content";
+import IdParamsSchema from "@vbhv11/stoker/openapi/schemas/id-params";
 
 const app = new OpenAPIHono();
 
@@ -397,7 +380,7 @@ app.openapi(
 export default app;
 ```
 
-#### stoker/openapi/schemas/slug-params
+#### @vbhv11/stoker/openapi/schemas/slug-params
 
 Validate `slug` in path params as a slug.
 
@@ -405,9 +388,9 @@ Validate `slug` in path params as a slug.
 
 ```ts
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
-import jsonContent from "stoker/openapi/helpers/json-content";
-import SlugParamsSchema from "stoker/openapi/schemas/slug-params";
+import * as HttpStatusCodes from "@vbhv11/stoker/http-status-codes";
+import jsonContent from "@vbhv11/stoker/openapi/helpers/json-content";
+import SlugParamsSchema from "@vbhv11/stoker/openapi/schemas/slug-params";
 
 const app = new OpenAPIHono();
 
@@ -439,7 +422,7 @@ app.openapi(
 export default app;
 ```
 
-#### stoker/openapi/schemas/id-uuid-params
+#### @vbhv11/stoker/openapi/schemas/id-uuid-params
 
 Validate `id` in path params as a uuid.
 
@@ -447,9 +430,9 @@ Validate `id` in path params as a uuid.
 
 ```ts
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
-import jsonContent from "stoker/openapi/helpers/json-content";
-import IdUUIDParamsSchema from "stoker/openapi/schemas/id-uuid-params";
+import * as HttpStatusCodes from "@vbhv11/stoker/http-status-codes";
+import jsonContent from "@vbhv11/stoker/openapi/helpers/json-content";
+import IdUUIDParamsSchema from "@vbhv11/stoker/openapi/schemas/id-uuid-params";
 
 const app = new OpenAPIHono();
 
@@ -481,7 +464,7 @@ app.openapi(
 export default app;
 ```
 
-#### stoker/openapi/schemas/create-message-object
+#### @vbhv11/stoker/openapi/schemas/create-message-object
 
 Create an object schema with a message string property. Useful for error
 messages.
@@ -490,11 +473,11 @@ messages.
 
 ```ts
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
-import * as HttpStatusPhrases from "stoker/http-status-phrases";
-import jsonContent from "stoker/openapi/helpers/json-content";
-import createMessageObjectSchema from "stoker/openapi/schemas/create-message-object";
-import IdParamsSchema from "stoker/openapi/schemas/id-params";
+import * as HttpStatusCodes from "@vbhv11/stoker/http-status-codes";
+import * as HttpStatusPhrases from "@vbhv11/stoker/http-status-phrases";
+import jsonContent from "@vbhv11/stoker/openapi/helpers/json-content";
+import createMessageObjectSchema from "@vbhv11/stoker/openapi/schemas/create-message-object";
+import IdParamsSchema from "@vbhv11/stoker/openapi/schemas/id-params";
 
 const app = new OpenAPIHono();
 
@@ -519,7 +502,7 @@ app.openapi(
 export default app;
 ```
 
-#### stoker/openapi/schemas/create-error-schema
+#### @vbhv11/stoker/openapi/schemas/create-error-schema
 
 Create an example error schema with zod error / validation messages based on
 given schema.
@@ -528,9 +511,9 @@ given schema.
 
 ```ts
 import { createRoute, z } from "@hono/zod-openapi";
-import * as HttpStatusCodes from "stoker/http-status-codes";
-import jsonContent from "stoker/openapi/helpers/json-content";
-import createErrorSchema from "stoker/openapi/schemas/create-error-schema";
+import * as HttpStatusCodes from "@vbhv11/stoker/http-status-codes";
+import jsonContent from "@vbhv11/stoker/openapi/helpers/json-content";
+import createErrorSchema from "@vbhv11/stoker/openapi/schemas/create-error-schema";
 
 const TaskSchema = z.object({
   name: z.string(),
