@@ -1,0 +1,25 @@
+{
+  "name": "@vbhv11/stoker",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./mod.ts",
+    "./http-status-codes": "./src/http-status-codes.ts",
+    "./http-status-phrases": "./src/http-status-phrases.ts",
+    "./middlewares": "./src/middlewares/mod.ts",
+    "./openapi": "./src/openapi/mod.ts",
+    "./openapi/helpers": "./src/openapi/helpers/mod.ts",
+    "./openapi/schemas": "./src/openapi/schemas/mod.ts"
+  },
+  "tasks": {
+    "test": "deno test"
+  },
+  "compilerOptions": {
+    "strict": true
+  },
+  "imports": {
+    "@asteasolutions/zod-to-openapi": "npm:@asteasolutions/zod-to-openapi@^7.2.0",
+    "@hono/hono": "jsr:@hono/hono@^4.6.7",
+    "@hono/zod-openapi": "npm:@hono/zod-openapi@^0.16.4",
+    "@std/assert": "jsr:@std/assert@^1.0.6"
+  }
+}
